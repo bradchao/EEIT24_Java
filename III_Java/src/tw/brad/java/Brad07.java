@@ -6,13 +6,13 @@ public class Brad07 {
 		// char => 2^16 => 0 ~ 65535
 		char c1 = 'a';
 		char c2 = 65;
-		char c3 = '¸ê';
+		char c3 = 'è³‡';
 		System.out.println(c1);
 		System.out.println(c2);
 		
-		int °¸ªº¦~ÄÖ = 18;
-		°¸ªº¦~ÄÖ++;
-		System.out.println(°¸ªº¦~ÄÖ);
+		int è®Šæ•¸1 = 18;
+		è®Šæ•¸1++;
+		System.out.println(è®Šæ•¸1);
 		
 		boolean isMale = true;
 		isMale = false;
