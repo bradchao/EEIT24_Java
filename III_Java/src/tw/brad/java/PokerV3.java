@@ -17,8 +17,25 @@ public class PokerV3 {
 		}
 		
 		// ------------------
+//		for (int i=0; i<poker.length; i++) {
+//			System.out.println(poker[i]);
+//		}
+		
+		// for-each
+		for (int card : poker) {
+			System.out.println(card);
+		}
+		System.out.println("----");
+		
+		// 發牌
+		int[][] players = new int[4][13];
 		for (int i=0; i<poker.length; i++) {
-			System.out.println(poker[i]);
+			players[i%4][i/4] = poker[i];
+		}
+		
+		// 驗算
+		for (int card : players[1]) {
+			System.out.println(card);
 		}
 	}
 
