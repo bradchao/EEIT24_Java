@@ -7,7 +7,7 @@ public class PokerV1 {
 		int[] poker = new int[52];	// poker[0] ~ poker[51]
 		for (int i=0; i<poker.length; i++) {
 			int rand = (int)(Math.random()*52);	// 0 - 51;
-			// ÀË¬d¾÷¨î
+			// æª¢æŸ¥æ©Ÿåˆ¶
 			boolean isRepeat = false;
 			for (int j=0; j<i; j++) {
 				if (poker[j] == rand) {
