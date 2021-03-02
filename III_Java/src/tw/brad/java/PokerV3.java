@@ -22,10 +22,10 @@ public class PokerV3 {
 //		}
 		
 		// for-each
-		for (int card : poker) {
-			System.out.println(card);
-		}
-		System.out.println("----");
+//		for (int card : poker) {
+//			System.out.println(card);
+//		}
+//		System.out.println("----");
 		
 		// 發牌
 		int[][] players = new int[4][13];
@@ -33,10 +33,14 @@ public class PokerV3 {
 			players[i%4][i/4] = poker[i];
 		}
 		
-		// 驗算
-		for (int card : players[1]) {
-			System.out.println(card);
+		// 攤牌
+		for (int[] player : players) {
+			for (int card : player) {
+				System.out.print(card +" ");
+			}
+			System.out.println();
 		}
+		
 	}
 
 }
