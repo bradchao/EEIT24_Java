@@ -2,7 +2,7 @@ package tw.brad.java;
 
 import java.util.Arrays;
 
-public class PokerV3 {
+public class PokerV3 { 
 
 	public static void main(String[] args) {
 		int[] poker = new int[52];
