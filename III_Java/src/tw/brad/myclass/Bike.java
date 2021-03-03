@@ -2,7 +2,7 @@ package tw.brad.myclass;
 
 public class Bike extends Object{
 	// 屬性
-	private double speed, speed2;
+	protected double speed, speed2;
 	private String color;
 	
 	// 建構式
