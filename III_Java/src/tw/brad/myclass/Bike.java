@@ -43,4 +43,9 @@ public class Bike extends Object{
 		return color;
 	}
 	
+	public String toString() {
+		// TODO Auto-generated method stub
+		return color;
+	}
+	
 }
