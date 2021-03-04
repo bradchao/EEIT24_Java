@@ -5,15 +5,45 @@ public class TWId {
 	private static String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
 	
 	public TWId() {
-		
+		this((int)(Math.random()*2)==0);
 	}
 	public TWId(boolean isMale) {
-		
+		this(isMale, (int)(Math.random()*26));
 	}
 	public TWId(int area) {
-		
+		this((int)(Math.random()*2)==0, area);
 	}
 	public TWId(boolean isMale, int area) {
+		// super();
+		id = createID(isMale, area);
+//		String id0 = letters.substring(area, area+1);
+//		StringBuffer sb = new StringBuffer(id0);
+//		sb.append(isMale?"1":"2");
+//		for (int i=0; i<7; i++) {
+//			sb.append((int)(Math.random()*10));
+//		}
+//		String temp = sb.toString();
+//		for (int i=0; i<10; i++) {
+//			if (checkID(temp + i)) {
+//				id = temp + i;
+//				break;
+//			}
+//		}
+	}
+	
+	private TWId(String id) {
+		this.id = id;
+	}
+	
+	public static TWId createTWId(String id) {
+		TWId twid = null;
+		if (checkID(id)) {
+			twid = new TWId(id);
+		}
+		return twid;
+	}
+	
+	private String createID(boolean isMale, int area) {
 		String id0 = letters.substring(area, area+1);
 		StringBuffer sb = new StringBuffer(id0);
 		sb.append(isMale?"1":"2");
@@ -23,15 +53,25 @@ public class TWId {
 		String temp = sb.toString();
 		for (int i=0; i<10; i++) {
 			if (checkID(temp + i)) {
-				id = temp + i;
+				temp = temp + i;
 				break;
 			}
 		}
+		return temp;
 	}
 	
 	public String getId() {
 		return id;
 	}
+	
+	public boolean isMale() {
+		return true;
+	}
+	
+	public String getArea() {
+		return "台中市";
+	}
+	
 	
 	public static boolean checkID(String id) {
 		// A123456789
