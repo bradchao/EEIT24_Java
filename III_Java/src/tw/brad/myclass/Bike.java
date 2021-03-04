@@ -3,7 +3,7 @@ package tw.brad.myclass;
 public class Bike extends Object{
 	// 屬性
 	protected double speed, speed2;
-	private String color;
+	private String color = null;
 	
 	// 建構式
 //	public Bike() {

@@ -2,6 +2,8 @@ package tw.brad.myclass;
 
 public class TWId {
 	private String id;
+	private static String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
+	
 	public TWId() {
 		
 	}
@@ -12,14 +14,29 @@ public class TWId {
 		
 	}
 	public TWId(boolean isMale, int area) {
-		
+		String id0 = letters.substring(area, area+1);
+		StringBuffer sb = new StringBuffer(id0);
+		sb.append(isMale?"1":"2");
+		for (int i=0; i<7; i++) {
+			sb.append((int)(Math.random()*10));
+		}
+		String temp = sb.toString();
+		for (int i=0; i<10; i++) {
+			if (checkID(temp + i)) {
+				id = temp + i;
+				break;
+			}
+		}
+	}
+	
+	public String getId() {
+		return id;
 	}
 	
 	public static boolean checkID(String id) {
 		// A123456789
-		String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
-		boolean ret = false;
-		if (id.matches("[A-Z][12][0-9]{8}")) {
+		boolean isRight = false;
+		if (id != null && id.matches("[A-Z][12][0-9]{8}")) {
 			char c1 = id.charAt(0);
 			int n12 = letters.indexOf(c1) + 10;
 			int n1 = n12 / 10;
@@ -36,8 +53,8 @@ public class TWId {
 			int n11 = Integer.parseInt(id.substring(9, 10));
 			int sum = n1*1 + n2*9 + n3*8 + n4*7 + n5*6 + n6*5 +
 					n7*4 + n8*3 +n9*2 + n10*1 + n11*1;
-			ret = sum % 10 == 0;
+			isRight = sum % 10 == 0;
 		}
-		return ret;
+		return isRight;
 	}
 }
