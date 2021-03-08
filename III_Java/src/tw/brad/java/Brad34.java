@@ -1,6 +1,7 @@
 package tw.brad.java;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -22,6 +23,7 @@ public class Brad34 extends JFrame {
 		guess = new JButton("Guess");
 		input = new JTextField();
 		log = new JTextArea();
+		log.setBackground(Color.YELLOW);
 		
 		JPanel top = new JPanel(new BorderLayout());
 		top.add(guess, BorderLayout.EAST);
@@ -30,10 +32,23 @@ public class Brad34 extends JFrame {
 		add(top, BorderLayout.NORTH);
 		add(log, BorderLayout.CENTER);
 		
-		setSize(640, 480);
 		setVisible(true);
+		setSize(640, 480);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		initGame();
 	}
+	
+	// 開新局
+	private void initGame() {
+		createAnswer();
+	}
+	
+	private String createAnswer() {
+		
+		return "123";
+	}
+	
 	public static void main(String[] args) {
 		new Brad34();
 	}
