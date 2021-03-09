@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -17,6 +18,8 @@ public class Brad34 extends JFrame implements ActionListener{
 	private JButton guess;
 	private JTextField input;
 	private JTextArea log;
+	private String answer;
+	private int i;		// i = 0;
 	
 	public Brad34() {
 		super("猜數字遊戲");
@@ -25,7 +28,7 @@ public class Brad34 extends JFrame implements ActionListener{
 		guess = new JButton("Guess");
 		input = new JTextField();
 		log = new JTextArea();
-		log.setBackground(Color.YELLOW);
+		//log.setBackground(Color.YELLOW);
 		
 		// super => 父類別的物件實體; this => 本類別的物件實體
 		// super(), this()
@@ -34,7 +37,6 @@ public class Brad34 extends JFrame implements ActionListener{
 		guess.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//System.out.println(createAnswer(4));
 				doGuess();
 			}
 		});
@@ -55,14 +57,42 @@ public class Brad34 extends JFrame implements ActionListener{
 	
 	// 開新局
 	private void initGame() {
-		createAnswer(4);
+		log.setText("");
+		answer = createAnswer(4);
+		i = 0;
+		System.out.println(answer);
 	}
 	
 	private void doGuess() {
+		i++;
 		String strInput = input.getText();
 		// 檢查幾A幾B
-		log.append(strInput + "\n");
+		String result = checkAB(strInput);
+		log.append(i + ": " + strInput + " => " + result + "\n");
 		input.setText("");
+		
+		if (result.equals("4A0B")) {
+			// WINNER
+			JOptionPane.showMessageDialog(null, "WINNER");
+			initGame();
+		}else if (i == 3) {
+			// Loser
+			JOptionPane.showMessageDialog(null, "Loser: " + answer);
+			initGame();
+		}
+	}
+	
+	private String checkAB(String g) {
+		int a, b; a = b = 0;
+		for (int i=0; i<answer.length(); i++) {
+			char gc = g.charAt(i), ac = answer.charAt(i);
+			if (gc == ac) {
+				a++;
+			}else if (answer.indexOf(gc) >= 0) {
+				b++;
+			}
+		}
+		return String.format("%dA%dB", a, b);
 	}
 	
 	private String createAnswer(int d) {
