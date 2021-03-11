@@ -18,7 +18,7 @@ public class TCPSender {
 			fin.close();
 			//--------------------------
 			Socket socket = new Socket(
-				InetAddress.getByName("10.0.103.94"), 9999);
+				InetAddress.getByName("127.0.0.1"), 9999);
 			OutputStream os =  socket.getOutputStream();
 			os.write(buf);
 			os.flush();
