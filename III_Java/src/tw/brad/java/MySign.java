@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class MySign extends JFrame {
-	private JButton clear, undo, redo, saveJPEG;
+	private JButton clear, undo, redo, saveJPEG, saveObj, loadObj;
 	private MyDrawer myDrawer;
 	
 	public MySign() {
@@ -26,10 +26,12 @@ public class MySign extends JFrame {
 		undo = new JButton("Undo");
 		redo = new JButton("Redo");
 		saveJPEG = new JButton("Save JPEG");
+		saveObj = new JButton("Save Brad");
+		loadObj = new JButton("Load Brad");
 		
 		JPanel top = new JPanel(new FlowLayout());
 		top.add(clear); top.add(undo); top.add(redo);
-		top.add(saveJPEG);
+		top.add(saveJPEG); top.add(saveObj); top.add(loadObj);
 		
 		add(top, BorderLayout.NORTH);
 		
@@ -68,6 +70,28 @@ public class MySign extends JFrame {
 			}
 		});
 		
+		saveObj.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					myDrawer.saveObject();
+				}catch (Exception e2) {
+					System.out.println(e2);
+				}
+			}
+		});
+
+		loadObj.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					myDrawer.loadObject();
+				}catch (Exception e2) {
+					System.out.println(e2);
+				}
+			}
+		});
+
 		setSize(800, 480);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
