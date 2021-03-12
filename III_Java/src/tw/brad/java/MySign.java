@@ -74,19 +74,19 @@ public class MySign extends JFrame {
 	}
 	
 	private void saveJPEG() throws IOException {
-//		BufferedImage image = 
-//			new BufferedImage(myDrawer.getWidth(), myDrawer.getHeight(), 
-//				BufferedImage.TYPE_INT_RGB);
-//		Graphics2D g2d = image.createGraphics();
-//		myDrawer.print(g2d);
-//		ImageIO.write(image, "jpeg", new File("dir1/sign.jpg"));
-		
 		BufferedImage image = 
-				new BufferedImage(getWidth(), getHeight(), 
-					BufferedImage.TYPE_INT_RGB);
+			new BufferedImage(myDrawer.getWidth(), myDrawer.getHeight(), 
+				BufferedImage.TYPE_INT_RGB);
 		Graphics2D g2d = image.createGraphics();
-		paint(g2d);
+		myDrawer.print(g2d);
 		ImageIO.write(image, "jpeg", new File("dir1/sign.jpg"));
+		
+//		BufferedImage image = 
+//				new BufferedImage(getWidth(), getHeight(), 
+//					BufferedImage.TYPE_INT_RGB);
+//		Graphics2D g2d = image.createGraphics();
+//		paint(g2d);
+//		ImageIO.write(image, "jpeg", new File("dir1/sign.jpg"));
 	}
 
 	public static void main(String[] args) {
