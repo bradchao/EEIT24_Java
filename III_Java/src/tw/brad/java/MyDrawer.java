@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 public class MyDrawer extends JPanel {
 	private MyMouseListener myMouseListener;
-	private LinkedList<LinkedList<HashMap<String, Integer>>> lines;
+	private LinkedList<LinkedList<HashMap<String, Integer>>> lines, recycle;
 	
 	public MyDrawer() {
 		setBackground(Color.YELLOW);
@@ -22,6 +22,7 @@ public class MyDrawer extends JPanel {
 		addMouseMotionListener(myMouseListener);
 		
 		lines = new LinkedList<>();
+		recycle = new LinkedList<>();
 	}
 	
 	@Override
@@ -58,6 +59,7 @@ public class MyDrawer extends JPanel {
 		@Override
 		public void mousePressed(MouseEvent e) {
 			super.mousePressed(e);
+			recycle.clear();
 			HashMap<String, Integer> point = new HashMap<>();
 			point.put("x", e.getX()); point.put("y", e.getY());
 			
@@ -69,4 +71,24 @@ public class MyDrawer extends JPanel {
 			repaint();
 		}
 	}
+	
+	public void clear() {
+		lines.clear();
+		repaint();
+	}
+	
+	public void undo() {
+		if (lines.size() > 0) {
+			recycle.add(lines.removeLast());
+			repaint();
+		}
+	}
+	
+	public void redo() {
+		if (recycle.size() > 0) {
+			lines.add(recycle.removeLast());
+			repaint();
+		}
+	}
+	
 }
